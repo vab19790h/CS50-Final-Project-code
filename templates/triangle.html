@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Triangle
+{% endblock %}
+
+{% block main %}
+
+      <img src="/static/images/Triangular.jpg" class = "style_images" alt="Rectangle_image">
+
+      <table id="for_js" style="float: left; margin: 5px;">
+        <thead>
+            <tr style="font-size: 20px; color: #727">
+              <td ><b>Enter values: </b></td>
+              <td><b>Select unit: </b></td>
+            </tr>
+        </thead>
+
+        <tbody>
+          <form action="/triangle" method="post" >
+            <tr>
+              <td><input id="height"  value="{{ inputValue["height"] }}" type="number" step="any" name="height" class="form-control form-control-sm" placeholder="height (h)"></td>
+              <td title="Select units for the entered dimentions">
+                <select class="form-control form-control-sm" name="unit_input">
+                  <option disabled selected value="">inputs' unit</option>
+                  <option {{ inputValue["mm_input"] }} value="mm">milimeter</option>
+                  <option {{ inputValue["cm_input"] }} value="cm">centimeter</option>
+                  <option {{ inputValue["m_input"] }} value="m">meter</option>
+                  <option {{ inputValue["in_input"] }} value="in">inch</option>
+                  <option {{ inputValue["ft_input"] }} value="ft">feet</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td><input type="number" value="{{ inputValue["width"] }}" step="any" name="width" class="form-control form-control-sm" placeholder="width (b)"></td>
+            </tr>
+
+            <tr style="font-size: 15px; color: #727;">
+                <td style="padding-top: 10px;">To find CG from left-end:</td>
+            </tr>
+
+            <tr>
+              <td title="Select one other dimention required to find the distance of centroid (CG) from the left-end">
+                <select onchange="manu()" id="value3_Type_triangle" class="form-control form-control-sm" name="value3_Type">
+                  <option selected value="none">third dimention type</option>
+                  <option {{ inputValue["angle_L_S"] }} value="angle_L">Left-Corner Angle</option>
+                  <option {{ inputValue["angle_R_S"] }} value="angle_R">Right-corner Angle </option>
+                  <option {{ inputValue["length_L_S"] }} value="length_L">Left-side Length</option>
+                  <option {{ inputValue["length_R_S"] }} value="length_R">Right-side Length </option>
+                </select>
+              </td>
+              <td ><input type="number" value="{{ inputValue["value3"] }}" min="0" step="any" name="value3" class="form-control form-control-sm" {{ inputValue["disabled"] }} style="visibility: hidden;" id="change"></td>
+            </tr>
+
+            <tr id="angle_opt" style="font-size: 17px; color: #727; position: middle; text-align: right; visibility: hidden;">
+              <td id="angle"></td>
+              <td><select class="form-control form-control-sm" name="angle_opt">
+                      <option selected value="">pick one</option>
+                      <option {{ inputValue["<90"] }} value="<90">< 90°</option>
+                      <option {{ inputValue[">90"] }} value=">90">> 90°</option>
+                  </select>
+                </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727;">
+                <td style="padding-top: 50px"><b>Oprional for answers: </b></td>
+            </tr>
+
+            <tr>
+              <td title="Enter prefered number digits after decimal point [Default: 10 digits]">
+                <input type="number" value="{{ inputValue["round"] }}" min="0" max="15" name="round" class="form-control form-control-sm" placeholder="round decimals to ?">
+              </td>
+              <td title="Select prefered units for answers [Default: same as inputs' units]">
+                  <select class="form-control form-control-sm" name="unit_ans">
+                    <option disabled selected value="">answers' unit</option>
+                    <option {{ inputValue["mm_ans"] }} value="mm">milimeter</option>
+                    <option {{ inputValue["cm_ans"] }} value="cm">centimeter</option>
+                    <option {{ inputValue["m_ans"] }} value="m">meter</option>
+                    <option {{ inputValue["in_ans"] }} value="in">inch</option>
+                    <option {{ inputValue["ft_ans"] }} value="ft">feet</option>
+                  </select>
+              </td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+            <td><button class="btn btn-primary" type="submit" formmethod="get" title="clear all answers and input values">reset</button></td>
+            <td onclick="manu_triangle()" style="text-align: center; padding: 10px"><button class="btn btn-primary" type="submit">Submit</button></td>
+            </tr>
+          </tfoot>
+          </form>
+
+      </table>
+
+      <table style="margin: 5px;">
+        <tr>
+          <td></td>
+          <td style="font-size: 20px; color: #727"><b>Answers:</b></td>
+        </tr>
+        {% for ans in answers %}
+          {% if ans[0] != "none" %}
+          <tr>
+            <td>➛ </td>
+            <td style="padding: 5px;"><b>{{ ans[0] }} = </b>{{ ans[1] }} {{ ans[2] }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+        <tr>
+          <td></td>
+              <td><h5 style="text-align: center; margin: 50px;" title="Scientific Calculator provided by desmos.com"><a href="https://www.desmos.com/scientific" target="_blank"><img src="/static/images/Calc_icon.svg" width="50" height="50" alt="CG_Icon"></a></h5></td>
+            </tr>
+      </table>
+
+{% endblock %}

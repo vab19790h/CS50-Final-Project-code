@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ellipse
+{% endblock %}
+
+{% block main %}
+
+      <img src="/static/images/Ellipse.png" class="style_images" alt="Rectangle_image">
+
+      <table style="float: left; margin: 10px;">
+        <thead>
+            <tr style="font-size: 20px; color: #727">
+              <td ><b>Enter values: </b></td>
+              <td><b>Select unit: </b></td>
+            </tr>
+        </thead>
+
+        <tbody>
+          <form action="/ellipse" method="post">
+            <tr>
+              <td><input type="number" value="{{ inputValue["b"] }}" step="any" name="b" class="form-control form-control-sm" placeholder="vertical (b)"></td>
+              <td title="Select units for the entered dimentions">
+                <select class="form-control form-control-sm" name="unit_input">
+                  <option disabled selected value="">inputs' unit</option>
+                  <option {{ inputValue["mm_input"] }} value="mm">milimeter</option>
+                  <option {{ inputValue["cm_input"] }} value="cm">centimeter</option>
+                  <option {{ inputValue["m_input"] }} value="m">meter</option>
+                  <option {{ inputValue["in_input"] }} value="in">inch</option>
+                  <option {{ inputValue["ft_input"] }} value="ft">feet</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td><input type="number" value="{{ inputValue["a"] }}" step="any" name="a" class="form-control form-control-sm" placeholder="horizontal (a)"></td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727;">
+                <td style="padding-top: 50px"><b>Oprional for answers: </b></td>
+            </tr>
+            <tr>
+              <td title="Enter prefered number digits after decimal point [Default: 10 digits]">
+                <input type="number" value="{{ inputValue["round"] }}" min="0" max="15" name="round" class="form-control form-control-sm" placeholder="round decimals to ?">
+              </td>
+              <td title="Select prefered units for answers [Default: same as inputs' units]">
+                  <select class="form-control form-control-sm" name="unit_ans">
+                    <option disabled selected value="">answers' unit</option>
+                    <option {{ inputValue["mm_ans"] }} value="mm">milimeter</option>
+                    <option {{ inputValue["cm_ans"] }} value="cm">centimeter</option>
+                    <option {{ inputValue["m_ans"] }} value="m">meter</option>
+                    <option {{ inputValue["in_ans"] }} value="in">inch</option>
+                    <option {{ inputValue["ft_ans"] }} value="ft">feet</option>
+                  </select>
+              </td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+            <td><button class="btn btn-primary" type="submit" formmethod="get" title="clear all answers and input values">reset</button></td>
+            <td style="text-align: center; padding: 10px"><button class="btn btn-primary" type="submit">Submit</button></td>
+            </tr>
+          </tfoot>
+          </form>
+
+      </table>
+
+      <table style=" margin: 10px;">
+        <tr>
+          <td></td>
+          <td style="font-size: 20px; color: #727"><b>Answers:</b></td>
+        </tr>
+        {% for ans in answers %}
+          {% if ans[0] != "none" %}
+          <tr>
+            <td>➛ </td>
+            <td style="padding: 5px;"><b>{{ ans[0] }} = </b>{{ ans[1] }} {{ ans[2] }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+        {% if answers[0][0] == "none" %}
+        <tr>
+            <td> </td>
+            <td style="padding: 5px;"><b>Something went wrong. <br> Please click on the reset button</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <td></td>
+              <td><h5 style="text-align: center; margin: 50px;" title="Scientific Calculator provided by desmos.com"><a href="https://www.desmos.com/scientific" target="_blank"><img src="/static/images/Calc_icon.svg" width="50" height="50" alt="CG_Icon"></a></h5></td>
+            </tr>
+      </table>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+
+
+
+    <form action="/new_password" method="post" style="text-align: center;">
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input readonly style="margin:5px;" autocomplete="off" class="form-control" name="first_name" type="text" value="{{ inputValue["first_name"] }}">
+                <input readonly style="margin:5px;"  autocomplete="off" class="form-control" id="last_name" name="last_name" type="text" value="{{ inputValue["last_name"] }}">
+        </div>
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input readonly style="margin:5px;" autocomplete="off" class="form-control" name="anime" type="text" value="{{ inputValue["anime"] }}">
+                <input readonly style="margin:5px;" autocomplete="off" class="form-control" name="username"  type="text" value="{{ inputValue["username"] }}">
+        </div>
+
+        <div style="margin: auto; width: 280px;" class="form-row form-group">
+                <input style="margin:5px;" autofocus onfocus="change()" class="form-control"  name="new_password" placeholder="New Password" type="password">
+                <input style="margin:5px;" class="form-control"  name="confirmation" placeholder="New Password (again)" type="password">
+        </div>
+
+        <small id="text" class="form-text text-muted"></small>
+
+
+        <button style="margin:10px;" class="btn btn-primary" type="submit">Reset Password</button>
+
+    </form>
+
+    <script>
+        let password_text = document.querySelector("#text");
+
+        function change()
+        {
+
+            password_text.innerHTML = "The Password must be 8-20 characters long, contain uppercase letters, numbers and special characters, and must not contain spaces.";
+        }
+
+
+    </script>
+
+{% endblock %}

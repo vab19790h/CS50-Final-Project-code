@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/static/images/cg_icon.svg.png" rel="icon">
+
+        <link rel="stylesheet" href="/static/styles.css">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <title>CG & MI calculator: History</title>
+
+        <style>
+            table {
+                margin: 10px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            td {
+             padding-left: 5px;
+            }
+
+            .inputs{
+                width: 24%;
+            }
+
+            .answers {
+                width: 43%;
+            }
+            @media (max-width : 650px) {
+                td{
+                    font-size: 12px;
+
+                }
+                .inputs{
+                width: auto;
+                }
+                .answers {
+                width: auto;
+            }
+
+            }
+        </style>
+
+    </head>
+
+    <body class="body">
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+            <a class="navbar-brand" href="/" title="homepage"><img src="/static/images/cg_icon.svg.png" width="30" height="30" alt="CG_Icon"></a>
+            <a class="navbar-brand"  href="/" title="Center of Gravity and Moment of Inetria Calculator">CG & MI calculator (2D)</a>
+
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li><a class="nav-link"  href="/cg" title="Center of Gravity">CG</a></li>
+                        <li><a class="nav-link"  href="/mi" title="Moment of Inertia">MI</a></li>
+                        <li><a class="nav-link"  href="/history" title="lookup old calculation">History</a></li>
+                    </ul>
+                {% if session.user_id %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li><a class="nav-link"  href="/logout">Log Out</a></li>
+                        <li><a class="nav-link" href="/about">About</a></li>
+
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+
+                        <li><a class="nav-link" href="/register">Register</a></li>
+                        <li><a class="nav-link" href="/login">Log In</a></li>
+                        <li><a class="nav-link" href="/about">About</a></li>
+                </ul>
+            </div>
+                {% endif %}
+        </nav>
+
+
+    {% for rows in history %}
+
+        {% if rows["shape"] == "Circle" %}
+
+        <table>
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/Circular.jpg" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td ><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>radius (r) = {{ rows["r"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td><b>➛ CMI about x-asis (Ix) = </b>{{ rows["MIx"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>➛ CMI about xyasis (Iy) = </b>{{ rows["MIy"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "Rectangle" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/Rectangular.jpg" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>height (h) = {{ rows["h_OR_d"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td>width (b) = {{ rows["b_OR_bf"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><b>➛ CMI about x-asis (Ix) = </b>{{ rows["MIx"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>➛ CMI about xyasis (Iy) = </b>{{ rows["MIy"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "Triangle" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/Triangular.jpg" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>height (h) = {{ rows["h_OR_d"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td>width (b) = {{ rows["b_OR_bf"] }} {{ rows["input_unit"] }}</td>
+                {% if rows["CGL"] != "Must provide third Dimention" %}
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+                {% endif %}
+            </tr>
+
+            <tr>
+                {% if rows["third_dim_type"] == "angle_L" %}
+                    <td>Left-Corner Angle = {{ rows["third_dim_value"] }}°</td>
+                {% elif rows["third_dim_type"] == "angle_R" %}
+                    <td>Right-Corner Angle = {{ rows["third_dim_value"] }}°</td>
+                {% elif rows["third_dim_type"] == "length_L" %}
+                    <td>Left-hand-side Length = {{ rows["third_dim_value"] }} {{ rows["input_unit"] }}</td>
+                {% elif rows["third_dim_type"] == "length_R" %}
+                    <td>Right-hand-side Length = {{ rows["third_dim_value"] }} {{ rows["input_unit"] }}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                {% if rows["third_dim_type"] == "length_L" %}
+                    <td>Left-Corner Angle{{ rows["angle_opt"] }}°</td>
+                {% elif rows["third_dim_type"] == "length_R" %}
+                    <td>Right-Corner Angle{{ rows["angle_opt"] }}°</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                <td><b>➛ CMI about x-asis (Ix) = </b>{{ rows["MIx"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>➛ CMI about xyasis (Iy) = </b>{{ rows["MIy"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "Trapezoid" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/Trapezoidal.jpg" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>height (h) = {{ rows["h_OR_d"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td>Top width (a) = {{ rows["a"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td>Bottom width (b) = {{ rows["b_OR_bf"] }} {{ rows["input_unit"] }}</td>
+            </tr>
+
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "Semicircle" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/semicircle.png" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td ><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>radius (r) = {{ rows["r"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td><b>➛ CMI about x-asis (Ix) = </b>{{ rows["MIx"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>➛ CMI about xyasis (Iy) = </b>{{ rows["MIy"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "Semiparabola" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/Semiparabolic.jpg" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>Verticle (b) = {{ rows["b_OR_bf"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td>Horizontal (a) = {{ rows["a"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "Ellipse" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/Ellipse.png" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>Verticle (b) = {{ rows["b_OR_bf"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td>Horizontal (a) = {{ rows["a"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+        {% if rows["shape"] == "I-Beam" %}
+
+        <table>
+
+            <hr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="showInMobile" ><b>Shape:</b> {{ rows["shape"] }} </td>
+            </tr>
+
+            <tr style="font-size: 16px; color: #727">
+                <td rowspan="5" ><img src="/static/images/I-beam.png" class = "style_images_history" alt="circle_image"></td>
+                <td class="inputs"><b>Entered values: </b></td>
+                <td class="answers"><b>Answers:</b></td>
+                <td><b>Date-Time:</b></td>
+            </tr>
+
+            <tr>
+                <td>Depth (d) = {{ rows["h_OR_d"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ Area = </b>{{ rows["Area"] }} {{ rows["ans_unit"] }}</td>
+                <td title="The time when it was calculated">{{ rows["time"] }}</td>
+
+            </tr>
+
+            <tr>
+                <td>Flange width (bf) = {{ rows["b_OR_bf"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CG from left-end  = </b>{{ rows["CGL"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+            <tr>
+                <td>Flange thickness (tf) = {{ rows["tf"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CG from bottom-end  = </b>{{ rows["CGB"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td>Web thickness (tw) = {{ rows["tw"] }} {{ rows["input_unit"] }}</td>
+                <td><b>➛ CMI about x-asis (Ix) = </b>{{ rows["MIx"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>➛ CMI about xyasis (Iy) = </b>{{ rows["MIy"] }} {{ rows["ans_unit"] }}</td>
+            </tr>
+
+        </table>
+
+        {% endif %}
+
+    {% endfor %}
+
+ <footer class="small text-center text-muted" style="background-color: white;">
+            <hr>
+            Data is extracted from <a href="https://books.google.com/books/about/Mechanics_of_Materials.html?id=HikDQgAACAAJ">Mechanics of Materials</a> by <a href="https://www.google.com/search?tbo=p&tbm=bks&q=inauthor:%22R.+C.+Hibbeler%22">R. C. Hibbeler</a>.
+            <hr>
+        </footer>
+        </div>
+
+        <script src="/static/change.js"></script>
+    </body>
+
+</html>

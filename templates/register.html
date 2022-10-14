@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+
+    <form action="/register" method="post" style="text-align: center;">
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input style="margin:5px;" autocomplete="off" autofocus class="form-control" name="first_name" placeholder="First name" type="text" value="{{ inputValue["first_name"] }}">
+                <input style="margin:5px;"  autocomplete="off" class="form-control" name="last_name" placeholder="Last name" type="text" value="{{ inputValue["last_name"] }}">
+        </div>
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input style="margin:5px;" onfocus="change1()" autocomplete="off"   class="form-control" name="anime" placeholder="favorite Animation Character" type="text" value="{{ inputValue["anime"] }}">
+                <small id="text1" class="form-text text-muted"></small>
+                <input style="margin:5px;" autocomplete="off"  class="form-control" name="username" placeholder="Username" type="text" value="{{ inputValue["username"] }}">
+        </div>
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input style="margin:5px;" onfocus="change0()" class="form-control"  name="password" placeholder="Password" type="password">
+                <small id="text0" class="form-text text-muted"></small>
+                <input style="margin:5px;" class="form-control"  name="confirmation" placeholder="Password (again)" type="password">
+        </div>
+
+
+        <button style="margin:10px;" class="btn btn-primary" type="submit">Register</button>
+
+    </form>
+
+    <a class="nav-link" style="text-align: center;" href="/forgot">Forgot/Change password</a>
+
+    <script>
+        let password_text = document.querySelector("#text0");
+        let anime_text = document.querySelector("#text1");
+
+        function change0()
+        {
+
+            password_text.innerHTML = "The Password must be 8-20 characters long, contain uppercase letters, numbers and special characters, and must not contain spaces.";
+        }
+
+
+        function change1()
+        {
+
+            anime_text.innerHTML = "Remember it well as it is a verification question. It will be asked in the case of change/forget your password.";
+        }
+
+
+    </script>
+{% endblock %}

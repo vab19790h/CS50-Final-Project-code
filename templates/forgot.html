@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    forgot/change
+{% endblock %}
+
+{% block main %}
+
+
+    <form action="/forgot" method="post" style="text-align: center;">
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input style="margin:5px;" autocomplete="off" autofocus class="form-control" name="first_name" placeholder="First name" type="text" value="{{ inputValue["first_name"] }}">
+                <input style="margin:5px;"  autocomplete="off" class="form-control" name="last_name" placeholder="Last name" type="text" value="{{ inputValue["last_name"] }}">
+        </div>
+
+        <div style="margin: auto; width: 280px;"class="form-row form-group">
+                <input onfocus="change()" style="margin:5px;" autocomplete="off"   class="form-control" name="anime" placeholder="favorite Animation Character" type="text" value="{{ inputValue["anime"] }}">
+                <small id="text" class="form-text text-muted"></small>
+                <input style="margin:5px;" autocomplete="off"  class="form-control" name="username" placeholder="Username" type="text" value="{{ inputValue["username"] }}">
+        </div>
+
+        <button style="margin:10px;" class="btn btn-primary" type="submit">Search Account</button>
+
+    </form>
+
+    <script>
+        let password_text = document.querySelector("#text");
+
+        function change()
+        {
+
+            password_text.innerHTML = "This value is case sensitive. Make sure it is exactly as you entered during registration.";
+        }
+    </script>
+{% endblock %}

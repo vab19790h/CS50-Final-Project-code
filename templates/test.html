@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en-US"> <!--<![endif]-->
+<head>
+<!-- Basic Page Needs
+========================================================= -->
+<meta charset="UTF-8">
+<title>Free Online Moment of Inertia Calculator | SkyCiv</title>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!-- Mobile Specific Metas & Favicons
+========================================================= -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="shortcut icon" href="https://skyciv.com/wp-content/uploads/2014/07/favicon.ico">
+<!-- WordPress Stuff
+========================================================= -->
+<link rel="pingback" href="https://skyciv.com/xmlrpc.php" />
+<link href='//skyciv.com/wp-content/cache/wpfc-minified/g13jqg1d/hj9k.css' rel="stylesheet">			<style>
+#icon_wrapper
+{
+position: fixed;
+top: 25%;
+left: 0px;
+z-index: 99999;
+}
+.awesome-social
+{
+margin-top:2px;
+color: white !important;
+text-align: center !important;
+line-height: 51px !important;
+width: 48px !important;
+height: 48px !important;
+font-size: 2em !important;
+text-shadow: 2px 2px 4px #000000;
+}
+.fuse_social_icons_links
+{
+outline:0 !important;
+}
+.fuse_social_icons_links:hover{
+text-decoration:none !important;
+}
+.fb-awesome-social
+{
+background: #3b5998;
+}
+.tw-awesome-social
+{
+background:#00aced;
+}
+.rss-awesome-social
+{
+background:#FA9B39;
+}
+.linkedin-awesome-social
+{
+background:#007bb6;
+}
+.youtube-awesome-social
+{
+background:#bb0000;
+}
+.flickr-awesome-social
+{
+background: #ff0084;
+}
+.pinterest-awesome-social
+{
+background:#cb2027;
+}
+.stumbleupon-awesome-social
+{
+background:#f74425 ;
+}
+.google-plus-awesome-social
+{
+background:#f74425 ;
+}
+.instagram-awesome-social
+{
+background:#517fa4 ;
+}
+.tumblr-awesome-social
+{
+background: #32506d ;
+}
+.vine-awesome-social
+{
+background: #00bf8f ;
+}
+.vk-awesome-social {
+background: #45668e ;
+}
+.soundcloud-awesome-social
+{
+background: #ff3300 ;
+}
+.reddit-awesome-social{
+background: #ff4500 ;
+}
+.stack-awesome-social{
+background: #fe7a15 ;
+}
+.behance-awesome-social{
+background: #1769ff ;
+}
+.github-awesome-social{
+background: #999999 ;
+}
+.envelope-awesome-social{
+background: #ccc ;
+}
+/*  Mobile */
+/* Custom Background */
+</style>
+<!-- All in One SEO Pack 2.3.15.2 by Michael Torbert of Semper Fi Web Design[384,490] -->
+<meta name="description"  content="Accurately and quickly calculate the moment of inertia, centroid, torsion constant and statical moment of area of a beam section using SkyCiv&#039;s Section Builder." />
+<meta name="keywords"  content="beam,section,second moment,second moment of inertia,torsion constant,torsion,torsion coefficient,centroid,polar,calculator,polar moment of inertia,section modulus calculator,beam section calculator,moment of inertia calculator,centroid calculator,statical moment,i beam,t beam,circle,circular,rectangular,l-section,hollow circular,section builder,rectangle,moment of inertia rectangle,moment of inertia circle,first moment of area" />
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="SkyCiv Cloud Structural Analysis Software &raquo; Feed" href="https://skyciv.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="SkyCiv Cloud Structural Analysis Software &raquo; Comments Feed" href="https://skyciv.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="SkyCiv Cloud Structural Analysis Software &raquo; Moment of Inertia Calculator for Beam Sections Comments Feed" href="https://skyciv.com/free-moment-of-inertia-calculator/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/skyciv.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4"}};
+!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56806,55356,56826),0,0),c.toDataURL().length>3e3):("simple"===a?d.fillText(String.fromCharCode(55357,56835),0,0):d.fillText(String.fromCharCode(55356,57135),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+display: inline !important;
+border: none !important;
+box-shadow: none !important;
+height: 1em !important;
+width: 1em !important;
+margin: 0 .07em !important;
+vertical-align: -0.1em !important;
+background: none !important;
+padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='headers-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/jomvghrb/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/k9qnx1cm/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='flexslider-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/7nunc8f1/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='prettyPhoto-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/ldtnimjm/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='stylesheet-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/fdkqo0g0/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='retina-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/q179q7a/hj9k.css' type='text/css' media='only screen and (-webkit-min-device-pixel-ratio: 2)' />
+<link rel='stylesheet' id='responsive-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/32450rhl/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='advanced-responsive-video-embedder-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/lmp1n1wq/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/1136jktp/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wooslider-flexslider-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/1bwa4e4d/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wooslider-common-css'  href='//skyciv.com/wp-content/plugins/flexslider/assets/css/style.css?ver=1.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wedocs-styles-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/ei627q21/hj9k.css' type='text/css' media='all' />
+<link rel='stylesheet' id='options_typography_Open+Sans:300,400,600-css'  href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-style-css'  href='//skyciv.com/wp-content/themes/inovado/framework/css/custom_script.css?ver=4.4' type='text/css' media='all' />
+<style id='custom-style-inline-css' type='text/css'>
+body{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; color: #777777; }
+h1{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 28px; font-weight: normal; color: #444444; }
+h2{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 23px; font-weight: normal; color: #444444; }
+h3{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; color: #444444; }
+h4{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #666666; }
+h5{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #444444; }
+h6{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; color: #444444; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited  { font-weight: inherit; color: inherit; }
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, a:hover h1, a:hover h2, a:hover h3, a:hover h4, a:hover h5, a:hover h6 { color: #666666; }
+.callus{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #999999 !important; }
+a, a:visited{ color: #289dcc; }
+a:hover, a:focus{ color: #666666; }
+#infobar{ position: fixed; }
+#topbar{ background: #ffffff; border-bottom: 1px solid #efefef; }
+#topbar .callus { color: #999999; }
+#topbar .callus a { color: #999999; }
+#topbar .callus a:hover { color: #289dcc; }
+.header{ background: #ffffff; }
+.header .slogan{ font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #999999; }
+/* Header V1 ------------------------------------------------------------------------ */
+#header { height: 100px; }
+#header .logo{ margin-top: 16px; }
+#header .select-menu{ background: #ffffff }
+#header #navigation ul#nav > li { height: 100px; }
+#header #navigation ul#nav > li > a { height: 97px; line-height: 97px; }
+#header #navigation ul#nav li .sub-menu{ top: 97px; }
+#header #header-searchform{ margin-top: 34px; }
+#header #header-cart{ margin-top: 34px; }
+#header #navigation ul#nav > li > a { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #888888; }
+#header #navigation ul#nav > li > a:hover { color: #444444; border-color: #444444; }
+#header #navigation ul#nav > li.current-menu-item > a,
+#header #navigation ul#nav > li.current-menu-item > a:hover,
+#header #navigation ul#nav > li.current-page-ancestor > a,
+#header #navigation ul#nav > li.current-page-ancestor > a:hover,
+#header #navigation ul#nav > li.current-menu-ancestor > a,
+#header #navigation ul#nav > li.current-menu-ancestor > a:hover,
+#header #navigation ul#nav > li.current-menu-parent > a,
+#header #navigation ul#nav > li.current-menu-parent > a:hover,
+#header #navigation ul#nav > li.current_page_ancestor > a,
+#header #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color: #289dcc; }
+/* Header V2 ------------------------------------------------------------------------ */
+#header-v2 .header-v2-container{ height: 90px; }
+#header-v2 .logo{ margin-top: 28px; }
+#header-v2 #header-searchform{ margin-top: 28px; }
+#header-v2 #header-cart{ margin-top: 28px; }
+#header-v2 .slogan{ margin-top: 33px; }
+#header-v2 #navigation .sub-menu{ top: 41px; }
+#header-v2 #navigation ul#nav > li > a { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #888888; }
+#header-v2 #navigation ul#nav > li > a:hover { color: #444444; border-color: #444444; }
+#header-v2 #navigation ul#nav > li.current-menu-item > a,
+#header-v2 #navigation ul#nav > li.current-menu-item > a:hover,
+#header-v2 #navigation ul#nav > li.current-page-ancestor > a,
+#header-v2 #navigation ul#nav > li.current-page-ancestor > a:hover,
+#header-v2 #navigation ul#nav > li.current-menu-ancestor > a,
+#header-v2 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+#header-v2 #navigation ul#nav > li.current-menu-parent > a,
+#header-v2 #navigation ul#nav > li.current-menu-parent > a:hover,
+#header-v2 #navigation ul#nav > li.current_page_ancestor > a,
+#header-v2 #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color: #289dcc; }
+#header-v2 #navigation ul#nav > li.current-menu-item > a:after,
+#header-v2 #navigation ul#nav > li.current-page-ancestor > a:after,
+#header-v2 #navigation ul#nav > li.current-menu-ancestor > a:after,
+#header-v2 #navigation ul#nav > li.current-menu-parent > a:after,
+#header-v2 #navigation ul#nav > li.current_page_ancestor > a:after{
+border-color: #289dcc transparent transparent transparent;
+}
+/* Header V3 ------------------------------------------------------------------------ */
+#header-v3 { height: 90px; }
+#header-v3 .logo{ margin-top: 28px; }
+#header-v3 #navigation ul{ margin-top: 26px; }
+#header-v3 #header-searchform{ margin-top: 28px; }
+#header-v3 #header-cart{ margin-top: 28px; }
+#header-v3 #navigation .sub-menu{ top: 35px; }
+#header-v3 #navigation ul#nav > li > a { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #888888; background: #ffffff; }
+#header-v3 #navigation ul#nav > li > a:hover,
+#header-v3 #navigation ul#nav > li.sfHover > a  { background: #444444; }
+#header-v3 #navigation ul#nav > li.current-menu-item > a,
+#header-v3 #navigation ul#nav > li.current-menu-item > a:hover,
+#header-v3 #navigation ul#nav > li.current-page-ancestor > a,
+#header-v3 #navigation ul#nav > li.current-page-ancestor > a:hover,
+#header-v3 #navigation ul#nav > li.current-menu-ancestor > a,
+#header-v3 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+#header-v3 #navigation ul#nav > li.current-menu-parent > a,
+#header-v3 #navigation ul#nav > li.current-menu-parent > a:hover,
+#header-v3 #navigation ul#nav > li.current_page_ancestor > a,
+#header-v3 #navigation ul#nav > li.current_page_ancestor > a:hover { background: #289dcc; }
+/* Header V4 ------------------------------------------------------------------------ */
+#header-v4 .header-v4-container{ height: 90px; }
+#header-v4 .logo{ margin-top: 28px; }
+#header-v4 #header-searchform{ margin-top: 28px; }
+#header-v4 #header-cart{ margin-top: 28px; }
+#header-v4 .slogan{ margin-top: 33px; }
+#header-v4 #navigation .sub-menu{ top: 41px; }
+#header-v4 #navigation{ background: #555555; }
+#header-v4 #navigation ul#nav > li > a { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #888888; }
+#header-v4 #navigation ul#nav > li > a:hover,
+#header-v4 #navigation ul#nav > li.sfHover > a { background: #444444; }
+#header-v4 #navigation ul#nav > li.current-menu-item > a,
+#header-v4 #navigation ul#nav > li.current-menu-item > a:hover,
+#header-v4 #navigation ul#nav > li.current-page-ancestor > a,
+#header-v4 #navigation ul#nav > li.current-page-ancestor > a:hover,
+#header-v4 #navigation ul#nav > li.current-menu-ancestor > a,
+#header-v4 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+#header-v4 #navigation ul#nav > li.current-menu-parent > a,
+#header-v4 #navigation ul#nav > li.current-menu-parent > a:hover,
+#header-v4 #navigation ul#nav > li.current_page_ancestor > a,
+#header-v4 #navigation ul#nav > li.current_page_ancestor > a:hover { background: #289dcc; }
+/* Header V5 ------------------------------------------------------------------------ */
+#header-v5 .header-v5-container{ height: 122px; }
+#header-v5 .logo{ margin-top: 33px; }
+#header-v5 .slogan{ margin-top: 4px; }
+#header-v5 #navigation .sub-menu{ top: 41px; }
+#header-v5 #navigation ul#nav > li > a { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #888888; }
+#header-v5 #navigation ul#nav > li > a:hover { color: #444444; }
+#header-v5 #navigation ul#nav > li.current-menu-item > a,
+#header-v5 #navigation ul#nav > li.current-menu-item > a:hover,
+#header-v5 #navigation ul#nav > li.current-page-ancestor > a,
+#header-v5 #navigation ul#nav > li.current-page-ancestor > a:hover,
+#header-v5 #navigation ul#nav > li.current-menu-ancestor > a,
+#header-v5 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+#header-v5 #navigation ul#nav > li.current-menu-parent > a,
+#header-v5 #navigation ul#nav > li.current-menu-parent > a:hover,
+#header-v5 #navigation ul#nav > li.current_page_ancestor > a,
+#header-v5 #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color:#289dcc; }
+/* Header V6 ------------------------------------------------------------------------ */
+#header-v6 { height: 100px; }
+#header-v6 .logo{ margin-top: 16px; }
+#header-v6 .select-menu{ background: #ffffff }
+#header-v6 #navigation ul#nav > li { height: 100px; }
+#header-v6 #navigation ul#nav > li > a { height: 97px; line-height: 97px; }
+#header-v6 #navigation .sub-menu{ top: 97px !important; }
+#header-v6 #header-searchform{ margin-top: 34px; }
+#header-v6 #header-cart{ margin-top: 34px; }
+#header-v6 #navigation ul#nav > li > a { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #888888; }
+#header-v6 #navigation ul#nav > li > a:hover { color: #444444; border-color: #444444; }
+#header-v6 #navigation ul#nav > li.current-menu-item > a,
+#header-v6 #navigation ul#nav > li.current-menu-item > a:hover,
+#header-v6 #navigation ul#nav > li.current-page-ancestor > a,
+#header-v6 #navigation ul#nav > li.current-page-ancestor > a:hover,
+#header-v6 #navigation ul#nav > li.current-menu-ancestor > a,
+#header-v6 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+#header-v6 #navigation ul#nav > li.current-menu-parent > a,
+#header-v6 #navigation ul#nav > li.current-menu-parent > a:hover,
+#header-v6 #navigation ul#nav > li.current_page_ancestor > a,
+#header-v6 #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color: #289dcc; }
+#header-v6.header-megamenu #navigation > ul#nav > li.megamenu > ul > li{ border-color: #646F81 !important; }
+#header-v6.header-megamenu #navigation .sub-menu ul li a,
+#header-v6.header-megamenu #navigation .sub-menu li a{ border-color: #646F81 !important; }
+#navigation ul#nav > li.current-menu-item > a,
+#navigation ul#nav > li.current-page-ancestor > a,
+#navigation ul#nav > li.current-page-parent > a{ font-weight: 600 !important; }
+/* Sub-Menu Navigation ------------------------------------------------------------------------ */
+html body #navigation .sub-menu{ background: #1C2533 !important; border-color: #289DCC !important; }
+html body #navigation .sub-menu li a,
+html body #navigation .sub-menu li .sub-menu li a,
+html body #navigation .sub-menu li .sub-menu li .sub-menu li a { font-family: Open Sans, Arial, Helvetica, sans-serif !important; font-size: 14px !important; font-weight: normal !important; color: #dedede !important; }
+#navigation .sub-menu li{ border-color: #646F81; }
+#navigation .sub-menu li a:hover,
+#navigation .sub-menu li .sub-menu li a:hover,
+#navigation .sub-menu li.current-menu-item a,
+#navigation .sub-menu li.current-menu-item a:hover,
+#navigation .sub-menu li.current_page_item a,
+#navigation .sub-menu li.current_page_item a:hover { color: #00b6ff !important; }
+#navigation ul#nav > li > ul > li:last-child > a:hover{ border:none !important; }
+#title {
+background: #FFFFFF;
+background-image: linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+background-image: -o-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+background-image: -moz-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+background-image: -webkit-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+background-image: -ms-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+border-bottom: 1px solid #e4e4e4;
+border-top: 1px solid #e4e4e4;
+}
+#title h1, #title .blog-h1 { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; color: #666666; }
+#title h2, #title .blog-h2 { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #aaaaaa; }
+#title #breadcrumbs { color: #aaaaaa; }
+#title #breadcrumbs a { color: #aaaaaa; }
+#title #breadcrumbs a:hover { color: #289dcc; }
+#alt-title h1, #alt-title .blog-h1 { background:#289dcc; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; color: #ffffff;  }
+#alt-title h2, #alt-title .blog-h2 { background:#ffffff; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #999999; }
+#alt-breadcrumbs, #no-title { background:#ffffff; border-bottom: 1px solid #e4e4e4; color: #999999; }
+#alt-title .grid{ opacity: 0.5; }
+#no-title  #breadcrumbs{ color: #999999; }
+#alt-breadcrumbs a, #no-title #breadcrumbs a { color: #999999; }
+#alt-breadcrumbs a:hover, #no-title #breadcrumbs a:hover { color: #289dcc; }
+#alt-title-2 h1, #alt-title-2 .blog-h1 { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #666666; }
+#alt-title-2 { background-color: #f4f4f4; border-top:1px solid #e4e4e4; border-bottom:1px solid #e4e4e4; }
+#alt-title-2 #breadcrumbs, #alt-title-2 #breadcrumbs a{ color: #999999; }
+#alt-title-2 #breadcrumbs a:hover{ color: #289dcc; }
+#sidebar .widget h3 { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; color: #444444; }
+/* Twitter Bar ------------------------------------------------------------------------ */
+#twitterbar { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #ffffff; background: #289dcc; }
+#twitterbar .twitterpost a { color: #ffffff; }
+/* Footer ------------------------------------------------------------------------ */
+#footer{ border-top: 10px solid #131923; }
+#footer, #infobar { border-top-color: #131923; background: #1C2533; color:#999999; }
+#footer a, #infobar a{ color:#999999; }
+#footer a:hover, #infobar a:hover{ color:#00b6ff; }
+#footer .widget h3, #infobar .widget h3 { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal !important; color: #ffffff !important; border-bottom:1px solid #555555; }
+#infobar .no-widgets{ color:#999999; }
+/* Copyright ------------------------------------------------------------------------ */
+#copyright { background: #131923; color: #999999; }
+#copyright a { color: #888888; }
+#copyright a:hover { color: #00b6ff; }
+/* Forms ------------------------------------------------------------------------ */
+input[type='text'], input[type='password'], input[type='email'], textarea, select, button, input[type='submit'], input[type='reset'], input[type='button'] { font-family: Open Sans, Arial, Helvetica, sans-serif; font-size: 14px; }
+/* Accent Color ------------------------------------------------------------------------ */
+::selection { background: #289dcc }
+::-moz-selection { background: #289dcc }
+.highlight { color: #289dcc }
+.post-icon { background: #289dcc }
+.single .post-tags a:hover { background: #289dcc; border-color: #289dcc; }
+#pagination a:hover { border-color: #289dcc; background: #289dcc; }
+#filters ul li a:hover { color: #289dcc }
+#filters ul li a.active { color: #289dcc }
+.portfolio-item:hover .portfolio-title { background: #289dcc; border-color: #289dcc; }
+.projects-nav a:hover,
+.post-navigation a:hover { background-color: #289dcc }
+.sidenav li a:hover, .widget_wp_nav_menu_desc li a:hover { color: #289dcc }
+.sidenav > li.current_page_item > a, .widget_wp_nav_menu_desc > li.current_page_item > a { border-left-color: #289dcc; color: #289dcc; }
+.sidenav > li.current_page_item > a, .sidenav > li.current_page_item > a:hover, .widget_wp_nav_menu_desc > li.current_page_item > a, .widget_wp_nav_menu_desc > li.current_page_item > a:hover { background-color: #289dcc; }
+.sidenav ul.children > li.current_page_item > a{ color: #289dcc }
+#back-to-top a:hover { background-color: #289dcc }
+.widget_tag_cloud a:hover { background: #289dcc; border-color: #289dcc; }
+.widget_flickr #flickr_tab a:hover { background: #289dcc; border-color: #289dcc; }
+.widget_portfolio .portfolio-widget-item .portfolio-pic:hover { background: #289dcc; border-color: #289dcc; }
+#footer .widget_tag_cloud a:hover,
+#infobar .widget_tag_cloud a:hover { background: #289dcc; border-color: #289dcc; }
+#footer .widget_flickr #flickr_tab a:hover,
+#infobar .widget_flickr #flickr_tab a:hover { background: #289dcc; border-color: #289dcc; }
+#footer .widget_portfolio .portfolio-widget-item .portfolio-pic:hover,
+#infobar .widget_portfolio .portfolio-widget-item .portfolio-pic:hover { background: #289dcc; border-color: #289dcc; }
+.flex-direction-nav a:hover { background-color: #289dcc }
+a.button.alternative-1 { background: #289dcc; border-color: #289dcc; }
+.gallery img:hover { background: #289dcc; border-color: #289dcc !important; }
+.skillbar .skill-percentage { background: #289dcc }
+.latest-blog .blog-item:hover h4 { color: #289dcc }
+.tp-caption.big_colorbg{ background: #289dcc; }
+.tp-caption.medium_colorbg{ background: #289dcc; }
+.tp-caption.small_colorbg{ background: #289dcc; }
+.tp-caption.customfont_color{ color: #289dcc; }
+.tp-caption a { color: #289dcc; }
+.tp-leftarrow.default:hover,
+.tp-rightarrow.default:hover { background-color: #289dcc !important; }
+.wooslider-direction-nav a:hover { background-color: #289dcc; }
+/* WooCommerce */
+.product .onsale{ background: #289dcc; }
+.woocommerce button, .woocommerce input[type=submit]{ color: #289dcc; }
+.products li .price{ color: #289dcc; }
+.product .price{ color: #289dcc; }
+.woocommerce-tabs .panel h2{ color: #289dcc; }
+.checkout .shop_table .total{ color: #289dcc; }
+.woocommerce .form-row input[type=submit],
+.woocommerce .form-row button{ color: #289dcc; }
+</style>
+<link rel='stylesheet' id='addtoany-css'  href='//skyciv.com/wp-content/cache/wpfc-minified/141ffs/hj9k.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://skyciv.com/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/easing.js?ver=1.3'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/fitvids.js?ver=1.0'></script>
+<link rel='https://api.w.org/' href='https://skyciv.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://skyciv.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://skyciv.com/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 4.4" />
+<link rel='shortlink' href='https://skyciv.com/?p=4484' />
+<link rel="alternate" type="application/json+oembed" href="https://skyciv.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fskyciv.com%2Ffree-moment-of-inertia-calculator%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://skyciv.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fskyciv.com%2Ffree-moment-of-inertia-calculator%2F&#038;format=xml" />
+<script data-cfasync="false">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+(function(d,s,a,b){a=d.createElement(s);b=d.getElementsByTagName(s)[0];a.async=1;a.src="https://static.addtoany.com/menu/page.js";b.parentNode.insertBefore(a,b);})(document,"script");
+</script>
+<link rel="alternate" hreflang="en" href="https://skyciv.com/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="zh" href="https://skyciv.com/zh/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="nl" href="https://skyciv.com/nl/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="fr" href="https://skyciv.com/fr/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="de" href="https://skyciv.com/de/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="el" href="https://skyciv.com/el/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="it" href="https://skyciv.com/it/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="ja" href="https://skyciv.com/ja/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="ru" href="https://skyciv.com/ru/free-moment-of-inertia-calculator/">
+<link rel="alternate" hreflang="es" href="https://skyciv.com/es/free-moment-of-inertia-calculator/">
+<style>
+@media only screen and (max-width: 767px) {
+#topbar .callus{ background: #efefef; }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+.header .logo .logo_standard{ display: none; }
+.header .logo .logo_retina{ display: inline; }
+}
+#header-v4 #navigation ul li a{ color: #ffffff; }
+.wooslider .wp-caption-text{ background: rgba(0,0,0,0.6) !important; }
+@media only screen and (min-width: 960px) {
+#header.stuck, #header-v6.stuck,
+#header-v2 #navigation.stuck,
+#header-v3.stuck,
+#header-v5 #navigation.stuck {
+-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, .12);
+-moz-box-shadow:0 1px 3px rgba(0, 0, 0, .12);
+box-shadow:0 1px 3px rgba(0, 0, 0, .12);
+background: rgba(255,255,255,0.90) !important;
+}
+}
+.blog-medium .post-icon {
+display: none;
+}
+#copyright{
+font-size:11px;
+}
+body {
+border-top: 3px solid #999999;
+}
+h1.title span, h2.title span, h4.title span{
+padding-bottom:8px;
+}
+strong { font-weight: 600 !important; }
+.title span {
+display: inline-block;
+line-height: 1 !important;
+background: none repeat scroll 0% 0% transparent;
+margin: 0px 0px -1px;
+padding: 0px 0px 10px;
+border-bottom: 1px solid #CCC;
+}
+.title {
+display: block;
+line-height: 1 !important;
+background: none repeat scroll 0% 0% transparent;
+margin: 0px 0px 26px !important;
+border-bottom: 1px solid #EAEAEA !important;
+}
+/* Filters for Portfolio */
+/*#filters{display:none;} */
+</style>
+<meta name="theme-color" content="#0066cc">
+<meta name="msapplication-navbutton-color" content="#0066cc">
+<meta name="apple-mobile-web-app-status-bar-style" content="#0066cc"><script type="text/javascript" src="/assets/js/browser_detect.js"></script>
+<link rel="stylesheet" href='//skyciv.com/wp-content/cache/wpfc-minified/mkqtufua/hj9k.css'>
+<!--<link rel="stylesheet" href='//skyciv.com/wp-content/cache/wpfc-minified/8j3ryr8v/hj9k.css'>-->
+<link rel="stylesheet" href='//skyciv.com/wp-content/cache/wpfc-minified/jzx1gz2r/hj9k.css'>
+<link rel="stylesheet" type="text/css" href='//skyciv.com/wp-content/cache/wpfc-minified/m9hnjr2o/hjlf.css'>	<script type="text/javascript" src="/assets/res/jsxgraphcore-0.99.js"></script>
+<link rel="stylesheet" type="text/css" href='//skyciv.com/wp-content/cache/wpfc-minified/ebh87qd/hjlf.css'>
+<script type="text/javascript" src="/assets/res/datasheet/handsontable.full.min.js"></script>
+<link rel="stylesheet" type="text/css" href='//skyciv.com/wp-content/cache/wpfc-minified/7ufu1xk5/hjlf.css'>
+<link rel="stylesheet" type="text/css" href='//skyciv.com/wp-content/cache/wpfc-minified/7l0tg6ct/hjlf.css'>
+<!--<script type="text/javascript" src="/assets/res/datasheet/ZeroClipboard/ZeroClipboard.min.js"></script>-->
+<script>
+function getGAClientId() {
+if (typeof ga !== 'undefined') {
+if (ga.getAll) {
+var ga_trackers = ga.getAll();
+for (var i=0; i<ga_trackers.length; i++) {
+return ga_trackers[i].get('clientId');
+}
+}
+}
+};
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42422033-3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-42422033-3', {
+'linker': {
+'domains': ['skyciv.com', 'platform.skyciv.com']
+}
+});
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PC7KRBN');</script>
+<!-- End Google Tag Manager -->
+<!-- Start of Async HubSpot Analytics Code
+<script type="text/javascript">
+(function(d,s,i,r) {
+if (d.getElementById(i)){return;}
+var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/1650793.js';
+e.parentNode.insertBefore(n, e);
+})(document,"script","hs-analytics",300000);
+</script>-->
+<!-- End of Async HubSpot Analytics Code -->
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1716437808636689', {uid: getGAClientId()});
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" src="https://www.facebook.com/tr?id=1716437808636689&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
+<!-- LinkedIn -->
+<script type="text/javascript">
+_linkedin_data_partner_id = "59583";
+</script><script type="text/javascript">
+(function(){var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=59583&fmt=gif" />
+</noscript>
+<!-- End LinkedIn -->
+<!-- Intercom Acquire for selected pages -->
+<script>
+window.intercomSettings = {
+app_id: 'mv62acvl',
+hide_default_launcher: false,
+};
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function")    {ic('reattach_activator');ic('update',intercomSettings);}else{var    d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args)   {i.q.push(args)};w.Intercom=i;function l(){var   s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/mv62acvl';var x=d.getElementsByTagName('script')   [0];x.parentNode.insertBefore(s,x);}if(w.attachEvent)   {w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+</script>
+<!-- ProfitWell -->
+<script id="profitwell-js" data-pw-auth="e969f52e55aba662fca4cc0ac77da124">
+(function(i,s,o,g,r,a,m){i[o]=i[o]||function(){(i[o].q=i[o].q||[]).push(arguments)};
+a=s.createElement(g);m=s.getElementsByTagName(g)[0];a.async=1;a.src=r+'?auth='+
+s.getElementById(o+'-js').getAttribute('data-pw-auth');m.parentNode.insertBefore(a,m);
+})(window,document,'profitwell','script','https://public.profitwell.com/js/profitwell.js');
+profitwell('start', {});
+</script>
+<!-- Quora Pixel Code (JS Helper) -->
+<script>
+!function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
+qp('init', 'cd55c14f15994d23af5a8c5cae02c16a');
+qp('track', 'ViewContent');
+qp('track', 'Generic');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://q.quora.com/_/ad/cd55c14f15994d23af5a8c5cae02c16a/pixel?tag=ViewContent&noscript=1"/></noscript>
+<!-- End of Quora Pixel Code -->
+<!-- BING -->
+<script>
+(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"17289138"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+</script>
+<!-- Hotjar Tracking Code for www.skyciv.com -->
+<script>
+(function(h,o,t,j,a,r){
+h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+h._hjSettings={hjid:364466,hjsv:6};
+a=o.getElementsByTagName('head')[0];
+r=o.createElement('script');r.async=1;
+r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<script type="text/javascript" src="/assets/res/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href='//skyciv.com/wp-content/cache/wpfc-minified/edqat7ah/hj9k.css'> <!-- this is the flick theme -->
+<link rel="stylesheet" href='//skyciv.com/wp-content/cache/wpfc-minified/queae8qk/hj9k.css'>
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<link href='//skyciv.com/wp-content/cache/wpfc-minified/qu4jy4tw/hj9k.css' type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/assets/js/utils.js"></script><link rel="stylesheet" type="text/css" href='//skyciv.com/wp-content/cache/wpfc-minified/epbn12bd/hj9k.css'>
+</head>
+<body class="page page-id-4484 page-template page-template-page-section page-template-page-section-php">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PC7KRBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrapall">
+<header id="header-v6" class="header header-megamenu clearfix">
+<div class="container">
+<div class="four columns">
+<div class="logo">
+<a href="https://skyciv.com/"><img src="/media/logos/SkyCiv-Structural-Analysis-Software-Logo-sml.png" alt="SkyCiv Cloud Structural Analysis Software" class="logo_standard" /></a>
+<a href="https://skyciv.com/"><img src="/media/logos/SkyCiv-Structural-Analysis-Software-Logo-sml.png" width="153px" height="65px" alt="SkyCiv Cloud Structural Analysis Software" class="logo_retina" /></a>							</div>
+</div>
+<div id="navigation" class="twelve columns clearfix">
+<ul id="nav" class="menu"><li id="menu-item-4354" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4354"><a href="https://skyciv.com/structural-software/">Software</a>
+<ul class="sub-menu">
+<li id="menu-item-2981" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2981"><a href="https://skyciv.com/structural-software/beam-analysis-software/">SkyCiv Beam</a></li>	<li id="menu-item-8298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8298"><a href="https://skyciv.com/structural-software/section-builder/">SkyCiv Section Builder</a></li>	<li id="menu-item-9302" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9302"><a href="https://skyciv.com/structural-software/s3d-structural-analysis-software/">SkyCiv Structural 3D</a></li>	<li id="menu-item-12948" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12948"><a href="https://skyciv.com/structural-software/connection-design/">SkyCiv Connection Design</a></li>	<li id="menu-item-12947" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12947"><a href="https://skyciv.com/structural-software/reinforced-concrete-design/">SkyCiv RC Design</a></li>	<li id="menu-item-13515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13515"><a href="https://skyciv.com/structural-software/wind-design-module/">SkyCiv Wind Load Module</a></li>	<li id="menu-item-21255" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21255"><a href="https://skyciv.com/integrations-and-add-ons/">Integrations and Plugins</a></li></ul>
+</li><li id="menu-item-7399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7399"><a href="https://skyciv.com/checkout/">Pricing</a>
+<ul class="sub-menu">
+<li id="menu-item-7400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7400"><a href="https://skyciv.com/checkout">Pricing</a></li>	<li id="menu-item-11703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11703"><a href="https://skyciv.com/pricing/student-account/">Student Account</a></li>	<li id="menu-item-11705" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11705"><a href="https://skyciv.com/pricing/basic/">Basic Account</a></li>	<li id="menu-item-11706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11706"><a href="https://skyciv.com/pricing/professional-account/">Professional Account</a></li>	<li id="menu-item-11707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11707"><a href="https://skyciv.com/pricing/enterprise/">Enterprise Account</a></li>	<li id="menu-item-11704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11704"><a href="https://skyciv.com/pricing/education/">Education Account</a></li></ul>
+</li><li id="menu-item-3036" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-3036"><a href="https://skyciv.com/free-beam-calculator">Free Tools</a>
+<ul class="sub-menu">
+<li id="menu-item-9433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9433"><a href="https://skyciv.com/free-beam-calculator/">Beam Calculator</a></li>	<li id="menu-item-3038" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3038"><a href="https://skyciv.com/free-truss-calculator/">Truss Calculator</a></li>	<li id="menu-item-3037" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3037"><a href="https://skyciv.com/free-frame-calculator/">Frame Calculator</a></li>	<li id="menu-item-4502" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-4484 current_page_item menu-item-4502"><a href="https://skyciv.com/free-moment-of-inertia-calculator/">Moment of Inertia Calculator</a></li>	<li id="menu-item-13447" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13447"><a href="https://skyciv.com/wind-load-calculator/">Free Wind Load Calculator</a></li>	<li id="menu-item-19621" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19621"><a href="https://skyciv.com/concrete-footing-calculator/">Foundation Calculator</a></li>	<li id="menu-item-9713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9713"><a href="https://skyciv.com/steel-i-beam-sizes/">Steel Beam Sizes</a></li>	<li id="menu-item-8968" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8968"><a href="https://skyciv.com/design/free-design-software/">Design Check Software</a></li></ul>
+</li><li id="menu-item-4680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4680"><a href="https://skyciv.com/blog/">Resources</a>
+<ul class="sub-menu">
+<li id="menu-item-4681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4681"><a href="https://skyciv.com/blog/">Blog</a></li>	<li id="menu-item-8564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8564"><a href="https://skyciv.com/docs/">Software Documentation</a></li>	<li id="menu-item-16543" class="menu-item menu-item-type-post_type menu-item-object-docs menu-item-16543"><a href="https://skyciv.com/docs/tutorials/">Tutorials</a></li>	<li id="menu-item-7699" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7699"><a href="https://skyciv.com/api-info/">API</a></li>	<li id="menu-item-6056" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6056"><a href="https://skyciv.com/featured-projects/">Featured Projects</a></li></ul>
+</li><li id="menu-item-3877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3877"><a href="https://skyciv.com/about/contact/">Contact Us</a>
+<ul class="sub-menu">
+<li id="menu-item-3552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3552"><a href="https://skyciv.com/about/contact/">Contact Us</a></li>	<li id="menu-item-15949" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15949"><a href="https://skyciv.com/our-team/">Our Team</a></li>	<li id="menu-item-2766" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2766"><a href="https://skyciv.com/about/">About Us</a></li>	<li id="menu-item-5218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5218"><a href="https://skyciv.com/faq/">F.A.Q.</a></li>	<li id="menu-item-20970" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20970"><a href="https://skyciv.com/feature-your-project/">Feature Your Project</a></li></ul>
+</li><li id="menu-item-3069" class="skyciv-btn-signup menu-item menu-item-type-custom menu-item-object-custom menu-item-3069"><a href="https://platform.skyciv.com/login">Login</a></li><li id="menu-item-6172" class="skyciv-btn-login menu-item menu-item-type-custom menu-item-object-custom menu-item-6172"><a href="https://skyciv.com/free-signup">Sign Up</a></li></ul>
+</div>
+</div>
+</header>
+<script type="text/javascript">
+if (localStorage.campaign_code == undefined) {
+//var pageStr = window.location.href;
+//var url_arr = pageStr.split("/");
+//var pageID = url_arr[url_arr.length-2];
+localStorage.campaign_code = "LP_free-moment-of-inertia-calculator";
+}
+</script>
+<div id="dialog-GENERAL-ALERT" title="" style="display:none">
+<div></div>
+</div>
+<script type="text/javascript" src="/assets/js/mobile.js?time=17"></script>
+<!-- Titlebar Type: No Titlebar -->
+<div id="no-title-divider"></div>
+<!-- End: Title Bar -->
+<div id="page-wrap nopadding">
+<div id="content">
+<article id="post-4484" class="post-4484 page type-page status-publish hentry">
+<div class="entry">
+<style>
+#dialog-BS {
+display: inline-block;
+}
+#calc_anchor_btn {
+background-color: #289DCC;
+color: white;
+padding: 5px;
+font-weight: 600;
+border-radius: 3px;
+width: 100%;
+display: inline-block;
+text-align: center;
+}
+#calc_anchor_btn:hover {
+cursor: pointer;
+background: #0D76A1 !important;
+}
+.section-heading {
+font-size: 32px;
+font-weight: 100;
+color: #289dcc;
+text-align: center;
+margin-bottom: 0px;
+}
+.section-subheading {
+font-size: 22px;
+font-weight: 100;
+color: #444;
+text-align: center;
+margin-bottom: 40px;
+}
+.teaser-img {
+object-fit: cover;
+height: 200px
+}
+</style>
+<div class="section " style="background-color: #ffffff; border: 1px solid #ececec; padding: 40px 0; "><div class="container clearfix"><div class="sixteen columns">
+<center>
+<h1 style="font-weight:200;">Free Moment of Inertia Calculator / Centroid Calculator</h1>
+<h4 style="color:289dcc; font-weight:200;">Calculate Moment of Inertia, Centroid, Section Modulus of Multiple Shapes</h4>
+<!--<div style="width:55%;">
+<ul class="styled-list two-col-list">
+<li><i class="icon-ok"></i> Calculate Moment of Inertia</li>
+<li><i class="icon-ok"></i> Centroid Calculator</li>
+<li><i class="icon-ok"></i> Moment of Inertia of Circle, Recangle, I beam and more</li>
+<li><i class="icon-ok"></i> Moment of Inertia Equations <a href="/checkout/"><strong style="color:#289dcc;">Paid</strong></a></li>
+<li><i class="icon-ok"></i> Custom Shapes, Built up Sections, Hand Calcs, plus more...<a href="/checkout/"><strong style="color:#289dcc;">Paid</strong></a></li>
+</ul>
+</div>-->
+</center>
+</div></div></div>
+<div class="section " style="background-color: #ffffff; border: 0px solid #ececec; padding: 40px 0; "><div class="container clearfix"><div class="sixteen columns">
+<div id="free-spill">
+<div style="height:425px">
+<div id='spill-div' style="float:left; width: 65%;">
+<p>This free SkyCiv's Free Moment of Inertia Calculator is able to accurately and quickly calculate the moment of inertia among other section properties. </p>
+<h2>How to use this Moment of Inertia Calculator? </h2>
+<p>To start using the free centroid calculator to calculate moment of inertia, simply choose the cross section you want to evaluate from the drop down list, then enter in the dimensions and click Calculate. The results for centroid, moment of inertia, statical moment section modulus and torsion constant will display on your right.</p>
+<h2>Find the moment of inertia with ease</h2>
+<p>This free multi-purpose calculator is taken from our full suite <a href='https://skyciv.com/skyciv-structural-features/'>Structural Analysis Software</a>. It allows you to: </p>
+<ul>
+<li>Calculate the Moment of Inertia (I) of a beam section (Second Moment of Area)</li>
+<li>Centroid Calculator used to calculate the Centroid (C) in the X and Y axis of a beam section</li>
+<li>Calculate the First moment of area (Statical Moment of Inertia) (Q) of a beam section (First Moment of Area)</li>
+<li>A Section Modulus Calculator to calculate the Section Modulus (Z) of a beam section</li>
+<li>Calculate the Torsion Constant (J) of a beam section</li>
+</ul>
+<h2>For more professional project needs:</h2>
+<p>To access the full functionalities of SkyCiv <a href='https://skyciv.com/skyciv-structural-features/'>Structural Analysis Software</a>, check out our <a href='https://skyciv.com/checkout/'>professional plans</a>. We have flexible plan options that tailor to different needs.</p>
+<br>
+<br>
+<!--<a id="calc_anchor_btn" href="#calc_anchor"><i class="fa fa-calculator"></i> Use the Free Moment of Inertia Calculator Below <i class="fa fa-arrow-down"></i></a>-->
+</div>
+<div style="float:left; width: 30%; padding-left: 3%;">
+<div style="width: 37%;">
+<style>
+#blog-content {
+width: 70%;
+float: left;
+}
+#right-signup {
+/*padding: 1%;
+box-shadow: 1px 1px 1px 2px #888888;
+position: absolute;*/
+width: 380px;
+z-index: 1;
+background: white;
+min-height: 300px;
+}
+#right-signup h1 {
+font-size: 22px;
+width: 60%;
+color: #289dcc;
+line-height: 34px;
+font-weight: 200;
+float:left;
+margin-left: 8px;
+}
+#trial-signup-form {
+float:left;
+}
+#right-signup input  {
+margin-bottom:7px;
+}
+#right-signup form {
+margin-bottom: 0px;
+}
+#paypal-buy-button {
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+box-sizing: border-box;
+}
+#paypal-buy-button:hover {
+background-color: #2C3E50 !important;
+cursor:pointer;
+}
+#loading {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+}
+html {
+margin-top: 0px !important;
+}
+</style>
+<script type="text/javascript" src="https://skyciv.com/assets/res/iframe/iframeSizer.min.js"></script>
+<div id="right-signup" >
+<div id="loading">
+<img src="/media/loaders/loader-3.gif" style="width:50px;"/>
+</div>
+<iframe scrolling="no" style="height: 400px; width: 100%; display:none;" src="https://platform.skyciv.com/register?frame=1&plan=1&template_id=11&title=Free Analysis and Design Software."></iframe>
+</div>
+<script type="text/javascript">
+jQuery("#right-signup iframe").load(function() {
+// Finally show it
+jQuery("#loading").hide();
+jQuery(this).show();
+});
+jQuery('#right-signup iframe').iFrameResize();
+jQuery(window).load(function() {
+// Cookie campaign
+var campaign_code = localStorage.campaign_code;
+var id_form_code = "paypal";
+if (campaign_code != undefined && campaign_code != null) {
+if (campaign_code == "bmd" || campaign_code == "BMD") {
+jQuery("#signup-form-1").hide();
+jQuery("#signup-form-2").show();
+id_form_code = "stripe"; // stripe has different custom value so they don't access to Free Structural 3D
+} else {
+jQuery("#signup-form-2").hide();
+jQuery("#signup-form-1").show();
+}
+jQuery("#s2member-pro-" + id_form_code + "-registration-custom-reg-field-campaign-code").val(campaign_code);
+}
+// Finally show it
+jQuery("#loading").hide();
+jQuery("#trial-signup-form").show();
+});
+</script>
+</div>
+</div>
+</div>
+</div></div></div>
+<div style="position:relative;">
+<!-- Anchor offset for site header menu -->
+<div id="calc-anchor" style="height:0px; position:absolute; top:-100px;"></div>
+</div>
+<div class="section " style="background-color: #EDF0F2; border: 1px solid #ececec; padding: 40px 0; "><div class="container clearfix"><div class="sixteen columns">
+<div id="dialog-upgrade" style="display:none;" title="Upgrade to SkyCiv!">
+<p class="sell-pts"></p>
+<div>
+<!--
+<p><img class="tick" src="/media/icons/tick.png"> <strong class="sell-pts"> No Ads</strong> </p>
+<p><img class="tick" src="/media/icons/tick.png"> <strong class="sell-pts"> Unlimited Solves</strong> </p>
+<p><img class="tick" src="/media/icons/tick.png"> <strong class="sell-pts"> Access to More Software!</strong> </p>
+-->
+<div id="free-moi-feature-image">
+<center><img src="https://skyciv.com/media/images/section-builder/FreeMOI/blank2.jpg"></center>
+</div>
+</div>
+<div id="timer_div" style="float: right;"></div>
+</div>
+<div id="dialog-BS" title="Add/Edit Values into the Moment of Inertia Calculate. Click 'Calculate' when done.">
+<p class="validateTips" style="width:100%;"></p>
+<div class="bs_dialog_left">
+<p id="custom_par" style="display:none;">
+Solution Needed:
+<select id="custom_solution_selector" onchange="changeCrossSection();">
+<option value="deflection">Only Deflection</option>
+<option value="stress">Stress and Deflection</option>
+</select>
+<br><br>
+<span id="custom_I_label"></span>
+<input type="text" name="custom_I" id="custom_I" placeholder="Moment of Inertia" value="" class="text ui-widget-content ui-corner-all">
+<br><br>
+<span id="custom_CentroidY_label"></span>
+<input type="text" name="custom_CentroidY" id="custom_CentroidY" placeholder="Neutral Axis (NA) Height" value="" class="text ui-widget-content ui-corner-all">
+<br><br>
+<span id="custom_c_bend_label"></span>
+<input type="text" name="custom_c_bend" id="custom_c_bend" placeholder="Section Height" value="" class="text ui-widget-content ui-corner-all">
+<br><br>
+<span id="custom_t_shear_label"></span>
+<input type="text" name="custom_t_shear" id="custom_t_shear" placeholder="Section Thickness at NA" value="" class="text ui-widget-content ui-corner-all">
+<br><br>
+<span id="custom_Qx_label"></span>
+<input type="text" name="custom_Qx" id="custom_Qx" placeholder="Statical Moment of Area" value="" class="text ui-widget-content ui-corner-all">
+</p>
+<img id = "csImage2" src='/media/old-uploads/2014/03/Rectangular.png'/>
+<select id="csSelect" onchange="changeCrossSection();updateSectionJSX();">
+<option value="rectangular">Rectangular</option>
+<option value="Hrectangular">Hollow Rectangular</option>
+<option value="circular">Circular</option>
+<option value="Hcircular">Hollow Circular</option>
+<option value="Ibeam">I-Beam</option>
+<option value="Tbeam">T-Beam</option>
+<option value="Lbeam">L-Beam</option>
+<option value="channel">Channel</option>
+<!--<option value="Hbeam">H-Beam</option>-->
+<option value="triangular">Triangular</option>
+<!--<option value="custom">Custom</option>-->
+</select>
+<div id="section-dims">
+<div id="b_par">
+<div class="section-dim-label">b:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="b_dim" id="b_dim" placeholder="Width" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="h_par">
+<div class="section-dim-label">h:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="h_dim" id="h_dim" value="" placeholder="Height" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="b1_par" style="display:none;">
+<div class="section-dim-label">b1:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="b1_dim" id="b1_dim" placeholder="Inner Width" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="h1_par" style="display:none;">
+<div class="section-dim-label">h1:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="h1_dim" id="h1_dim" placeholder="Inner Height" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="D_par" style="display:none;">
+<div class="section-dim-label">D:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="D_dim" id="D_dim" placeholder="Outer Diameter" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="d_par" style="display:none;">
+<div class="section-dim-label">d:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="d_dim" id="d_dim" placeholder="Inner Diameter" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="TFw_par" style="display:none;">
+<div class="section-dim-label">TFw:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="TFw_dim" id="TFw_dim" placeholder="Top Width" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="TFt_par" style="display:none;">
+<div class="section-dim-label">TFt:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="TFt_dim" id="TFt_dim" placeholder="Top Thickness" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="BFw_par" style="display:none;">
+<div class="section-dim-label">BFw:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="BFw_dim" id="BFw_dim" placeholder="Bottom Width" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="BFt_par" style="display:none;">
+<div class="section-dim-label">BFt:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="BFt_dim" id="BFt_dim" placeholder="Bottom Thickness" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="LFh_par" style="display:none;">
+<div class="section-dim-label">LFh:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="LFh_dim" id="LFh_dim" placeholder="Left Height" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="LFt_par" style="display:none;">
+<div class="section-dim-label">LFt:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="LFt_dim" id="LFt_dim" placeholder="Left Thickness" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="RFh_par" style="display:none;">
+<div class="section-dim-label">RFh:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="RFh_dim" id="RFh_dim" placeholder="Right Height" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="RFt_par" style="display:none;">
+<div class="section-dim-label">RFt:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="RFt_dim" id="RFt_dim" placeholder="Right Thickness" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="Wh_par" style="display:none;">
+<div class="section-dim-label">Wh:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="Wh_dim" id="Wh_dim" placeholder="Web Height" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="Wt_par" style="display:none;">
+<div class="section-dim-label">Wt:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="Wt_dim" id="Wt_dim" placeholder="Web Thickness" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();">
+</div>
+</div>
+<div id="fillet_rad_par" style="display:none;">
+<div class="section-dim-label">r:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" name="fillet_rad" id="fillet_rad" placeholder="Fillet Radius" class="text ui-widget-content ui-corner-all" onchange = "updateSectionJSX();" tabindex=-1>
+</div>
+</div>
+</div>
+</div>
+<div class="bs_dialog_middle">
+<div id="csImageJSX" class="jxgbox" style="width:260px; height: 260px; cursor:crosshair; margin-bottom: 10%;"></div>
+<p style="display:inline;">Units:</p>
+<select id="UnitsL" style="width: 70px; display: inline;" onchange="changeCrossSection(); updateSectionJSX();">
+<option value="mm">mm</option>
+<option value="cm">cm</option>
+<option value="m">m</option>
+<option value="in">in</option>
+<option value="ft">ft</option>
+</select>
+<br>
+<button id="calculate-submit" onclick=
+"sectionDimCheck(false);"
+>Calculate</button><br>
+<button id="clear-submit" onclick="loadSectGenerator('1', 'clear');" >Clear</button><br>
+<div class="youngsTable" style="display:none;">
+<h6>Material Properties</h6>
+<select id="youngSelect" onchange="changeYoungsBox(); ">
+<option value="none">Common Materials</option>
+<option value="steel">Structural Steel</option>
+<option value="aluminium">Aluminium</option>
+<option value="rcf">Carbon Fibre Reinforced Plastic</option>
+<option value="concrete">Concrete</option>
+<option value="concretehs">High Strength Concrete</option>
+<option value="glass">Glass</option>
+<option value="oakwood">Oak Wood</option>
+<option value="custommaterial">Custom</option>
+</select>
+<div class="section-dim-label">E:</div>
+<div class="dialog-input-container">
+<span class="dialog-unit"></span>
+<input type="text" id="youngBox" name="youngBox" value="200" placeholder="Young's Modulus" class="text ui-widget-content ui-corner-all">
+</div>
+<br>
+<div class="section-dim-label">v:</div>
+<input type="text" value="0.2" placeholder="Poisson's Ratio" id="v">
+</div>
+</div>
+<div class="bs_dialog_right">
+<table id="hor-zebra">
+<thead>
+<tr>
+<th scope="col">Notation</th>
+<th scope="col">Value</th>
+<th scope="col">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A <span class="tooltips"><a href="#" rel="tooltip" title="Area of Section." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span> </td>
+<td id="Area_cell_val">-</td>
+<td id="Area_cell_unit">-</td>
+</tr>
+<tr class="section-table-partition">
+<td>I<sub>z</sub><span class="tooltips"><a href="#" rel="tooltip" title="Moment of Inertia about the z-axis." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Ixx_cell_val">-</td>
+<td id="Ixx_cell_unit">-</td>
+</tr>
+<tr>
+<td>I<sub>y</sub><span class="tooltips"><a href="#" rel="tooltip" title="Moment of Inertia about the y-axis." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Iyy_cell_val">-</td>
+<td id="Iyy_cell_unit">-</td>
+</tr>
+<tr class="section-table-partition unsymmetric-section">
+<td>I<sub>zp</sub><span class="tooltips"><a href="#" rel="tooltip" title="Moment of Inertia about the principal z-axis." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Ixxp_cell_val">-</td>
+<td id="Ixxp_cell_unit">-</td>
+</tr>
+<tr class="unsymmetric-section">
+<td>I<sub>yp</sub><span class="tooltips"><a href="#" rel="tooltip" title="Moment of Inertia about the principal y-axis." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Iyyp_cell_val">-</td>
+<td id="Iyyp_cell_unit">-</td>
+</tr>
+<tr class="unsymmetric-section">
+<td>&alpha;<sub>p</sub><span class="tooltips"><a href="#" rel="tooltip" title="Angle of rotation of principal axes" data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="alphap_cell_val">-</td>
+<td id="alphap_cell_unit">-</td>
+</tr>
+<tr class="section-table-partition">
+<td>C<sub>z</sub><span class="tooltips"><a href="#" rel="tooltip" title="Distance from furthest left point of beam section to the centroid." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="CentroidX_cell_val">-</td>
+<td id="CentroidX_cell_unit">-</td>
+</tr>
+<tr>
+<td>C<sub>y</sub><span class="tooltips"><a href="#" rel="tooltip" title="Distance from bottom of beam section to the centroid." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="CentroidY_cell_val">-</td>
+<td id="CentroidY_cell_unit">-</td>
+</tr>
+<tr class="section-table-partition">
+<td>Q<sub>z</sub><span class="tooltips"><a href="#" rel="tooltip" title="Statical Moment of Area about the z-axis." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Qx_cell_val">-</td>
+<td id="Qx_cell_unit">-</td>
+</tr>
+<tr>
+<td>Q<sub>y</sub><span class="tooltips"><a href="#" rel="tooltip" title="Statical Moment of Area about the y-axis." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Qy_cell_val">-</td>
+<td id="Qy_cell_unit">-</td>
+</tr>
+<tr class="section-table-partition">
+<td>S<sub>zb</sub><span class="tooltips"><a href="#" rel="tooltip" title="Elastic Section Modulus about the z-axis to the left of the section." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Zx_cell_val">-</td>
+<td id="Zx_cell_unit">-</td>
+</tr>
+<tr>
+<td>S<sub>yb</sub><span class="tooltips"><a href="#" rel="tooltip" title="Elastic Section Modulus about the y-axis to the bottom of the section." data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="Zy_cell_val">-</td>
+<td id="Zy_cell_unit">-</td>
+</tr>
+<tr class="section-table-partition">
+<td>J<span class="tooltips"><a href="#" rel="tooltip" title="Torsion Constant" data-placement="top"><img class="tooltips-info" src="/media/icons/info-20.png"></a></span></td>
+<td id="J_cell_val">-</td>
+<td id="J_cell_unit">-</td>
+</tr>
+</tbody>
+</table>
+<img style="width: 50%;margin-bottom:20px;" src="/media/logos/L2-white-trans-sml.png"/><br>
+</div>
+</div>
+<br>
+<button class="free-moi-preview-buttons" id="free-moi-preview-hand-calcs">Hand Calculations</button>
+<button class="free-moi-preview-buttons" id="free-moi-preview-build-anything">Build Anything</button>
+<button class="free-moi-preview-buttons" id="free-moi-preview-database">Database</button>
+<button class="free-moi-preview-buttons" id="free-moi-preview-save">Save and Load</button>
+<button class="free-moi-preview-buttons" id="free-moi-preview-create-account">More Solves</button>
+<br>
+<br>
+<script type="text/javascript" src="/assets/js/moi.js?1596106295"></script>
+</div></div></div>
+<div class="section " style="background-color: #ffffff; border: none; padding: 30px 0; "><div class="container clearfix"><div class="sixteen columns">
+<h1 class="section-heading">Need More Functionality?</h1>
+<h3 class="section-subheading">Get Access to our full suite of Structural Analysis Software</h3>
+<div class="gap" style="height: 30px;"></div>
+<div class="one_third">
+<a href="/section-builder-software-features/"><div class="teaser"><div class='teaser-img'><img src='https://skyciv.com/media/images/section-builder/hand_calculations_featured_page.jpg' /></div></a>
+<h3>Hand Calculations</h3>
+<p>SkyCiv shows you how to calculate the moment of inertia by showing the step-by-step moment of inertia equations and calculations... The also show centroid and area calculations.</p>
+</div>
+</div>
+<div class="one_third">
+<a href="/section-builder-software-features/"><div class="teaser"><div class='teaser-img'><img src='https://skyciv.com/media/images/section-builder/arm_and_leg_beam.png' /></div></a>
+<h3>Custom and Built-Up Sections</h3>
+<p>SkyCiv Section Builder uses FEA to calculate key section properties, allowing you to model anything you need. Simply upgrade and get access to powerful software.</p>
+</div>
+</div>
+<div class="one_third last">
+<a href="/section-builder-software-features/"><div class="teaser"><div class='teaser-img'><img src='https://skyciv.com/wp-content/uploads/2016/11/Custom-Sections-Integrated-S3D-Renderer.png' /></div></a>
+<h3>Integrated with Analysis Software</h3>
+<p>The SkyCiv Section Builder is fully integrated with all SkyCiv Analysis Software including SkyCiv Beam and SkyCiv Structural 3D - so you can analyze your section under loads.</p>
+</div>
+</div><div class="clear"></div>
+<center>
+<a href='/section-builder-software-features/' class="get-started button alternative-4 large hollow-btn" rel="slides&#091;buttonlightbox&#093;">Learn More</a>
+<a href='/pricing/' class="get-started button alternative-1 large" rel="slides&#091;buttonlightbox&#093;">Upgrade Now!</a></center>
+</div></div></div>
+<div class="section " style="background-color: #ffffff; border: 0px solid #ececec; padding: 40px 0; "><div class="container clearfix"><div class="sixteen columns">
+<h2 class="title"><span>About the Moment of Inertia Calculator</span></h2>
+<p style="font-size: 14px;">This simple, easy-to-use moment of inertia calculator will find moment of inertia for a circle, rectangle, hollow rectangular section (HSS), hollow circular section, triangle, I-Beam, T-Beam, L-Sections (angles) and channel sections, as well as centroid, section modulus and many more results. </p>
+<p>You can solve up to three sections before you're required to sign up for a free account - which also gives you access to more software and results.</p>
+<h3 class="title"><span>Moment of Inertia</span></h3>
+<p style="font-size: 14px;">For instance, if you're looking how to calculate the moment of inertia of a rectangle you can use the tool above simply by selecting <em>rectangle</em> from the drop down list then entering some dimensions for height and width (e.g. 100, 200). After clicking "Calculate", the tool will calculate the moment of inertia. Our paid version will show the full hand calculations of how the tool got to this result. These detailed step-by-step instructions help for you to follow the calculations and learn how to calculate the moment of inertia. Alternatively, we have a tutorial on <a href="/tutorials/calculating-beam-section-moment-of-inertia/" target="_blank">how to find moment of inertia.</a></p>
+<h3 class="title"><span>Section Modulus Calculator</span></h3>
+<p style="font-size: 14px;">The calculator will also produce results like section modulus (Z) and the statical moment of inertia (Q) for your sections. Finally, the result for Torsion Constant (J) will also display using this tool. The SkyCiv Section Builder will also produce these results accurately using FEA analysis of the cross section. So if you need more results, or to add custom shapes - please check out our extra functionality of the <a href='/section-builder-software-features/'>SkyCiv Section Builder</a>.</p>
+<h3 class="title"><span>More Tools Available</span></h3>
+<p style="font-size: 14px;">SkyCiv also offers other tools such as <a href='https://skyciv.com/steel-i-beam-sizes/'>I beam size tool</a> and <a href='https://skyciv.com/design/free-design-software/'>free structural design software</a>. The dynamic section drawer will also show you a graphical representation of your beam section. So if you want to calculate the moment of inertia of a circle, moment of inertia of a rectangle or any other shapes, feel free to use the below software or our all-inclusive <a href='https://skyciv.com/section-builder-software-features/'>SkyCiv Section Builder</a>.</p>
+<div class="section " style="background-color: #ffffff; border: 0px solid #ececec; padding: ; "><div class="container clearfix"><div class="sixteen columns"></div></div></div>
+<h2 class="title"><span>About SkyCiv</span></h2>
+<p>SkyCiv offers a wide range of <a href="/">Cloud Structural Analysis and Design</a> Software for engineers. As a constantly evolving tech company, we're committed to innovating and challenging existing workflows to save engineers time in their work processes and designs. </p>
+<br><br>
+<p class="section-subheading" style="font-size:18px; font-weight:500;">If you are an engineering professional, you might benefit more by using our cloud based 3D Structural Analysis Software beyond this calculator. This software includes integrated design modules such as AISC, ACI, AS, Eurocode and CSA. Check out our professional packages here:</p>
+<center>
+<a href='/3d-structural-analysis-software-features/' class="get-started button alternative-1 large" rel="slides&#091;buttonlightbox&#093;">3D Structural Analysis Software</a></center>
+<br><br>
+</div></div></div>
+<!--
+[section bgcolor="" padding="40px 0" border="1px solid #ececec"]
+[separator headline="h3" title="Need more Functionality?"]
+<p><a href='/section-builder-software-features/'>SkyCiv Section Builder</a> is a fully-featured cross section analysis tool that can analyze any cross section you come across. This fully-online software uses powerful Finite Element Analysis to calculate all the above results, plus more. For instance, Torsion Radius and Warping Constant can only be accurately calculated using powerful FEA software. </p>
+<p>As well as this, the software can handle any custom shape from points or lines for complex shapes. The software can also import DXF files from CAD to analyze any section that comes across your desk.</p>
+[separator headline="h3" title="More Free Tools Available"]
+<p>Here at SkyCiv, we continue to deliver valuable tools and resources that will aid in the work of structural engineers. We have a long list of other free and easy to use tools for you to check out. Check out our <a href="https://skyciv.com/steel-i-beam-sizes/">free design section reference</a> for obtaining the geometric properties of standard steel or aluminum sections. Check out our <a href="https://skyciv.com/free-beam-calculator/">free beam design module</a> for analysis of simply-supported beams. You can also check out our <a href="https://skyciv.com/free-truss-calculator/">free truss calculator</a> for quick analysis of 2D trusses. For small 2D frames, you can check out our <a href="https://skyciv.com/free-frame-calculator/">free structural frame calculator</a>.
+</p>
+[/section]	-->
+<script>
+jQuery(window).load(function() {
+jQuery("#disqus_thread").wrap('<div class="section" style="background-color: #ffffff; border: 0px solid #ececec; padding: 0px;"><div class="container clearfix"><div class="sixteen columns"></div></div></div>');
+jQuery("#calc-anchor")[0].scrollIntoView({
+behavior: "smooth",
+block: "start",
+});
+});
+</script>
+</div>
+</article>
+<div id="disqus_thread">
+</div>
+</div> <!-- end content -->
+</div> <!-- end page-wrap -->
+	<div class="clear"></div>
+<footer id="footer">
+<div class="container">
+<div class="clearfix">
+<div class="widget widget_text three columns">
+<p>SkyCiv Software</p>
+<div class="textwidget">
+<ul style="width:100%; float:left;">
+<li class="page_item"><a href="/pricing/">Pricing</a></li>
+<li class="page_item"><a href="/beam-calculator-features/">SkyCiv Beam</a></li>
+<!--<li class="page_item"><a href="/truss-calculator-features/">SkyCiv Truss</a></li>-->
+<li class="page_item"><a href="/structural-software/truss-and-frame/">SkyCiv Frame/Truss</a></li>
+<li class="page_item"><a href="/design/free-design-software/">SkyCiv Design<!--<sup style="color: rgb(150, 255, 0); font-size: 11px;"> NEW</sup>--></a></li>
+<li class="page_item"><a href="/3d-structural-analysis-software-features/">SkyCiv Structural 3D</a></li>
+<li class="page_item"><a href="/section-builder-software-features/">SkyCiv Section Builder</a></li>
+<li class="page_item"><a href="/structural-software/connection-design/">SkyCiv Connection Design</a></li>
+<li class="page_item"><a href="/structural-software/reinforced-concrete-design/">SkyCiv Reinforced Concrete</a></li>
+<li class="page_item"><a href="/structural-software/wind-design-module/">SkyCiv Wind Load Design</a></li>
+<li class="page_item"><a href="/api-info/">SkyCiv API<!--<sup style="color: rgb(150, 255, 0); font-size: 11px;"> NEW</sup>--></a></li>
+<!--<li class="page_item"><a href="/documentation/">Documentation</a></li>-->
+</ul>
+<!--<ul style="width:5%; float: right;"></ul>-->
+</div>
+</div>
+<div class="widget widget_text three columns">
+<p>Free Resources</p>
+<div class="textwidget">
+<ul>
+<li class="page_item"><a href="/free-beam-calculator/">Beam Calculator</a></li>
+<li class="page_item"><a href="/free-truss-calculator/">Truss Calculator</a></li>
+<li class="page_item"><a href="/free-frame-calculator/">Frame Calculator</a></li>
+<li class="page_item"><a href="/free-shaft-calculator/">Shaft Calculator</a></li>
+<li class="page_item"><a href="/free-moment-of-inertia-calculator/">MoI Calculator</a></li>
+<li class="page_item"><a href="/tutorials/">Tutorials</a></li>
+</ul>
+</div>
+</div>
+<div class="widget widget_text three columns">
+<p>Industries</p>
+<div class="textwidget">
+<ul>
+<li class="page_item"><a href="/industries/structural-engineering/">Structural Engineering</a></li>
+<li class="page_item"><a href="/industries/mechanical-engineering/">Mechanical Engineering</a></li>
+<li class="page_item"><a href="/industries/offshore-oil-and-gas/">Oil &amp; Gas</a></li>
+<li class="page_item"><a href="/industries/naval-architecture/">Naval Architecture</a></li>
+<li class="page_item"><a href="/industries/scaffolding/">Scaffolding</a></li>
+<li class="page_item"><a href="/industries/rigging/">Event Rigging</a></li>
+<li class="page_item"><a href="/industries/education/">Education</a></li>
+<li class="page_item"><a href="/industries/steel-structure-analysis-and-design/">Steel Design</a></li>
+<li class="page_item"><a href="/industries/concrete-structure-analysis-and-design/">Concrete Design</a></li>
+<li class="page_item"><a href="/industries/wood-timber-analysis-design/">Timber Design</a></li>
+<li class="page_item"><a href="/industries/cold-formed-steel-design/">Cold Formed Steel</a></li>
+</ul>
+</div>
+</div>
+<div class="widget widget_text three columns">
+<p>About</p>
+<div class="textwidget">
+<ul>
+<li class="page_item"><a href="/about/contact/">Contact Us</a></li>
+<li class="page_item"><a href="/documentation/">Documentation</a></li>
+<li class="page_item"><a href="/blog/">News &amp; Blog</a></li>
+<li class="page_item"><a href="/our-team/">Our Team</a></li>
+<li class="page_item"><a href="/about/">About Us</a></li>
+<li class="page_item"><a href="/faq/">F.A.Q</a></li>
+<li class="page_item"><a href="/about/terms-and-conditions/">Terms &amp; Conditions</a></li>
+<li class="page_item"><a href="/about/contact/">Help &amp; Support</a></li>
+<li class="page_item"><a href="/careers-at-skyciv/">Careers</a></li>
+</ul>
+</div>
+</div>
+<div class="widget widget_text three columns">
+<!--<h3>Connect With Us</h3>-->
+<p>Engineers love our Software</p>
+<div class="textwidget">
+<div style="width:100%; display:inline-block">
+<div class="social-icon social-facebook"><a href="https://facebook.com/skycivengineering" title="Facebook" target="_blank">Facebook</a></div><div class="social-icon social-linkedin"><a href="https://linkedin.com/company/skyciv-engineering" title="Linkedin" target="_blank">Linkedin</a></div><div class="social-icon social-youtube"><a href="https://www.youtube.com/skyciv" title="Youtube" target="_blank">Youtube</a></div><div class="social-icon social-twitter"><a href="https://twitter.com/skycivonline" title="Twitter" target="_blank">Twitter</a></div>						</div>
+<br>
+<br>
+<a href="http://www.capterra.com/engineering-cad-software/reviews/147474/SkyCiv%20Structural%203D/SkyCiv%20Engineering?utm_source=vendor&amp;utm_medium=badge&amp;utm_campaign=capterra_reviews_badge" target="_blank">
+<img src="https://assets.capterra.com/badge/0370a94e411397edcb501a2924476723.png?v=2104175&amp;p=147474" alt="captera structural engineering review" border="0">
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="clearfix">
+<hr style='border: solid #555555; border-width: 1px 0 0; clear: both; margin: 10px 0 10px; height: 0;'>
+<div class="widget widget_text four columns">
+<div class="textwidget ticker-container">
+<div class="ticker-icon-container">
+<i class="fa fa-folder-open"></i>
+</div>
+<div class="ticker-counter" id="ticker-projects">121,416</div>
+<div class="ticker-label">Projects Managed</div>
+</div>
+</div>
+<div class="widget widget_text four columns">
+<div class="textwidget ticker-container">
+<div class="ticker-icon-container">
+<i class="fa fa-check"></i>
+</div>
+<div class="ticker-counter" id="ticker-total">4,939,742</div>
+<div class="ticker-label">Projects Solved</div>
+</div>
+</div>
+<div class="widget widget_text four columns">
+<div class="textwidget ticker-container">
+<div class="ticker-icon-container">
+<i class="mdi mdi-ray-start-end"></i>
+</div>
+<div class="ticker-counter" id="ticker-beams">3,839,178</div>
+<div class="ticker-label">Beams Solved</div>
+</div>
+</div>
+<div class="widget widget_text four columns">
+<div class="textwidget ticker-container">
+<div class="ticker-icon-container">
+<i class="mdi mdi-bridge"></i>
+</div>
+<div class="ticker-counter" id="ticker-structures">1,100,564</div>
+<div class="ticker-label">Structures Solved</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<div id="copyright" class="clearfix">
+<div class="container">
+<div class="copyright-text eight columns">
+&copy; Copyright 2015-2020. SkyCiv Engineering. ABN: 73 605 703 071
+</div>
+<div class="eight columns translation-selector">
+<span class="translation-selector-label">Language: </span><span class="no_translate"><select name="lang" onchange="document.location.href=this.options[this.selectedIndex].value;"><option value="/free-moment-of-inertia-calculator/" selected="selected">English</option><option value="/zh/free-moment-of-inertia-calculator/">中文(简体)</option><option value="/nl/free-moment-of-inertia-calculator/">Nederlands</option><option value="/fr/free-moment-of-inertia-calculator/">Français</option><option value="/de/free-moment-of-inertia-calculator/">Deutsch</option><option value="/el/free-moment-of-inertia-calculator/">Ελληνικά</option><option value="/it/free-moment-of-inertia-calculator/">Italiano</option><option value="/ja/free-moment-of-inertia-calculator/">日本語</option><option value="/ru/free-moment-of-inertia-calculator/">Русский</option><option value="/es/free-moment-of-inertia-calculator/">Español</option></select><br/></span><div id="tr_credit">by <a href="http://transposh.org/"><img height="16" width="16" src="/wp-content/plugins/transposh-translation-filter-for-wordpress/img/tplogo.png" style="padding:1px;border:0;box-shadow:0 0;border-radius:0" title="Transposh - translation plugin for wordpress" alt="Transposh - translation plugin for wordpress"/></a></div>			</div>
+</div>
+</div><!-- end copyright -->
+<div class="clear"></div>
+</div><!-- end wrapall -->
+<div id="back-to-top"><a href="#">Back to Top</a></div>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"https:\/\/skyciv.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"skyciv"};
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"4484 http:\/\/skyciv.com\/?page_id=4484","disqusShortname":"skyciv","disqusTitle":"Moment of Inertia Calculator for Beam Sections","disqusUrl":"https:\/\/skyciv.com\/free-moment-of-inertia-calculator\/","postId":"4484"};
+var dclCustomVars = {"dcl_progress_text":"Loading..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/disqus-conditional-load/assets/js/public/embed-scroll.min.js?ver=11.0.1'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/flexslider/assets/js/jquery.mousewheel.min.js?ver=2.1.0-20121206'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/flexslider/assets/js/jquery.flexslider.min.js?ver=2.1.0-20121206'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/wedocs/assets/js/anchor.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var weDocs_Vars = {"ajaxurl":"https:\/\/skyciv.com\/wp-admin\/admin-ajax.php","nonce":"f00442a9ee","style":"https:\/\/skyciv.com\/wp-content\/plugins\/wedocs\/assets\/css\/print.css","powered":"\u00a9 SkyCiv Cloud Structural Analysis Software, 2020. Powered by weDocs<br>https:\/\/skyciv.com"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/wedocs/assets/js/frontend.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/shortcodes.js?ver=1.0'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/bootstrap.js?ver=1.0'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/superfish.js?ver=1.4'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/mobilemenu.js?ver=1.0'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/waypoints.js?ver=2.0.2'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/waypoints-sticky.js?ver=1.4'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/functions.js?ver=1.0'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/prettyPhoto.js?ver=3.1'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/themes/inovado/framework/js/twitter/jquery.tweet.js?ver=1.0'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-content/plugins/page-links-to/js/new-tab.min.js?ver=2.9.8'></script>
+<script type='text/javascript' src='https://skyciv.com/wp-includes/js/wp-embed.min.js?ver=4.4'></script>
+<div id='icon_wrapper'></div>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+/* ------------------------------------------------------------------------ */
+/* Add PrettyPhoto */
+/* ------------------------------------------------------------------------ */
+var lightboxArgs = {
+animation_speed: 'fast',
+overlay_gallery: true,
+autoplay_slideshow: false,
+slideshow: 5000, /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+theme: 'pp_default',
+opacity: 0.8,
+show_title: false,
+social_tools: "",			deeplinking: false,
+allow_resize: true, 			/* Resize the photos bigger than viewport. true/false */
+counter_separator_label: '/', 	/* The separator for the gallery counter 1 "of" 2 */
+default_width: 940,
+default_height: 529
+};
+$('a[href$=jpg], a[href$=JPG], a[href$=jpeg], a[href$=JPEG], a[href$=png], a[href$=gif], a[href$=bmp]:has(img)').prettyPhoto(lightboxArgs);
+$('a[class^="prettyPhoto"], a[rel^="prettyPhoto"]').prettyPhoto(lightboxArgs);
+if (/Android|BlackBerry|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent) === false) {
+$('#header, #header-v2 #navigation, #header-v3, #header-v4 #navigation, #header-v5 #navigation, #header-v6').waypoint('sticky');
+}
+$('html').css({'background-color' : '#131923'});
+});
+</script>
+</body>
+</html><!-- WP Fastest Cache file was created in 0.421509027481 seconds, on 30-07-20 20:51:35 -->
